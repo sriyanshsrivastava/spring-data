@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor // lombok annotation it generates no argument constructor automatically.
 @Entity         //tells spring boot that it is a entity
-@Table(name = "AUTHOR_TBL")
 public class Author {
 
     @Id
@@ -34,4 +34,6 @@ public class Author {
     @Column(insertable = false)
     private LocalDateTime lastModified;
 
+    @ManyToMany(mappedBy = "authors")
+    private List<Course> courses;
 }
